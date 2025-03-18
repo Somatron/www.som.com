@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/ruritania" rel="stylesheet">
+</head>
+<body>
+    <div class= "section1">
+        <div class="text">Som.dot.Com</div>
+    </div>            
+
+    <div class="section2">
+        <div class="text-content">
+            <div class="text2">
+            About me
+            </div>
+            <div class="text3aboutthissite">
+                
+                <p id="demo"></p>
+                <p id="demo2"></p>
+                <script> /*JAVASCRIPT*/
+
+                var aboutme = 'Hello, My name is Som Javia. I made this website for CAPS Global Buisness, I am going to KU next year to major in Computer Science. The reason why I joined Global Buisness is so I could learn about the buisness industry in the tech world. Feel free to take a look at my website.';
+                var speed = 8;
+                
+                function Typewriter() {
+                    document.getElementById("demo").innerHTML = aboutme;
+                    document.getElementById("demo").style.visibility = "hidden";
+    
+                    // Get the height and store it
+                    var fullHeight = document.getElementById("demo").offsetHeight;
+    
+                    // Set a fixed height to the container
+                    document.getElementById("demo").parentElement.style.height = fullHeight + "px";
+    
+                    // Clear the text and make it visible again
+                    document.getElementById("demo").innerHTML = "";
+                    document.getElementById("demo").style.visibility = "visible";
+    
+                    // Now start typing
+                    window.i = 0;
+                    TypewriterEffect();
+                    
+                    }
+                    
+                    function TypewriterEffect(){
+                        if (i < aboutme.length) {
+                            document.getElementById("demo").innerHTML += aboutme.charAt(i);
+                            i++;
+                            setTimeout(TypewriterEffect, speed);
+                        }
+                    }
+
+                
+                </script>
+            </div>
+            <h3> <a href="https://www.linkedin.com/in/som-javia-2679b32a4/">Linked-in</a> </h3> 
+        </div>            
+
+                           
+
+        <!-- JAVA SCRIPT IMAGE SLIDER -->
+        <section class="image-content">
+           <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.slider'); //VARIABLE connected to CSS section
+        const slides = document.querySelectorAll('.slider img'); //VARIABLE connected to CSS section 
+        const navButtons = document.querySelectorAll('.slider-nav a'); //VARIABLE connected to CSS section
+  
+        //new variable track.
+        const track = document.createElement('div'); //Sets this for DIV files
+        track.className = 'slider-track'; //Class for CSS. For animation
+
+        // move all slides into one single track
+        slides.forEach(slide => { //For each slide
+            slide.style.display = 'block'; // Display the slide
+            track.appendChild(slide); //Child class for the track file
+        });
+
+        //insert Track into Slider
+        slider.innerHTML = ''; //blank
+        slider.appendChild(track); //point
+
+        let currentIndex = 0; //currentCounter
+
+        // Go to a specific slide the User would want
+        function goToSlide(index) { 
+            currentIndex = index;//Sets slide to current
+            track.style.transform = `translateX(-${index * 100}%)`; //animation
+
+            //ACTIVE BUTTON
+            navButtons.forEach((btn, idx) => { //For each button, counting index of images
+            if (idx === currentIndex) { //if our 2nd index matches with the current index
+                btn.classList.add('active'); //Button opacity is Active
+            }
+            else {
+                btn.classList.remove('active'); //Other wise it wont be active
+            }
+            });
+        }
+
+        //Function to advance to next slide
+        function nextSlide() { 
+            let nextIndex = (currentIndex + 1) % slides.length; //idk some math equation copied from claude
+            goToSlide(nextIndex); //Goes to slide
+        }
+        
+        goToSlide(0); //current
+        
+        //autosliding
+        let autoSlideInterval = setInterval(nextSlide, 5000);
+
+        navButtons.forEach((button, index) => {  //for Each button in the index
+            button.addEventListener('click', function(e) { //when click cast function/event
+                e.preventDefault(); //prevents page jumping
+
+                clearInterval(autoSlideInterval);//stops auto sliding
+                goToSlide(index); //go to click whatever button is clicked on le index
+
+                autoSlideInterval = setInterval(nextSlide, 5000); //Waits for 5 seconds to move to next slide
+            });
+        });
+
+        slider.addEventListener('mouseenter', function() { //if our mouse is in it..
+            clearInterval(autoSlideInterval); //then autosliding cancels
+        });
+
+        slider.addEventListener('mouseleave', function() { //otherwise is mouse leaves
+            autoSlideInterval = setInterval (nextSlide, 5000); //continue autosliding after 5 secs
+        });
+    });
+            </script> 
+
+            <div class="slider-wrapper">
+                <div class="slider">
+                <img id="slide-1" src="San.PNG" alt="Featured Image" class="featured-image">
+                <img id="slide-2" src="Indigo.png" alt="Featured Image" class="featured-image">
+                <img id="slide-3" src="certificate.PNG" alt="Featured Image" class="featured-image">
+            </div>
+
+            <div class="slider-nav">
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+            </div>
+        
+                </div>
+        </section>
+    </div>
+
+<section class="Pega6">
+<div class="logos">
+    <div class="logos-slide">
+        <img src="./logos/3m.svg" />
+        <img src=".\logos\barstool-store.svg" />
+        <img src="./logos/budweiser.svg" />
+        <img src="./logos/buzzfeed.svg" />
+        <img src="./logos/forbes.svg" />
+        <img src="./logos/macys.svg" />
+        <img src="./logos/menshealth.svg" />
+        <img src="./logos/mrbeast.svg" />
+    </div>
+    <div class="logos-slide">
+        <img src="./logos/3m.svg" />
+        <img src=".\logos\barstool-store.svg" />
+        <img src="./logos/budweiser.svg" />
+        <img src="./logos/buzzfeed.svg" />
+        <img src="./logos/forbes.svg" />
+        <img src="./logos/macys.svg" />
+        <img src="./logos/menshealth.svg" />
+        <img src="./logos/mrbeast.svg" />
+    </div>
+</div>
+
+    <div class="scroll-container">
+        <h2>About Pega6</h2>
+        <p>Pega6 is a career accelerator program for students who want to lead up to Product Management or Software Engineering
+            after High School to prepare for real world jobs. <br> I was given the fantastic opportunity to be apart of its beta
+            testing program, where I learn the dos and don'ts in the Tech Industry. <br> I took the role, as a Product Manager, to lead Software developers in creating applications. 
+            Like a Calculator or a TODO List<br> You can view them here: 
+        </p>
+<div class="BorderFrame1">
+        <section class="Calculator"> 
+
+            <div class="Calculator-Content">
+                <BorderText> Calculator for Kids</BorderText>
+                <p>Our first project is a simple online calculator for Kindergarteners. The
+                    concept was simple at first, however the more I heard about customer feedback,
+                    the more I realized that this Calculator is meant to be designed as an educational
+                    learning tool for children to learn about basic Math Operations at the ground level.
+                    The visuals are nicely made to appeal to children and a challenging fun mode to
+                    help kids solve problems at any pace. 
+                </p>
+            </div>            
+            <div class="Picture1">
+                <img src="Calculator.gif" alt="Calculator">  
+            </div>
+        </section>          
+    </div>
+        
+<div class="BorderFrame2">
+        <section class="TODO">            
+            <div class="Picture2">
+                <img src="projects.png" alt="Projects">
+            </div>
+            <div class="TodoList">
+                <BorderText>My Projects</BorderText>
+                <p>A showcase of my work and projects.</p>
+            </div>
+    </section>
+</div>
+        
+<div class="BorderFrame3">
+    <section class="AboutME"> 
+
+        <div class="About-Content">
+            <BorderText> Nice cold spot deep water</BorderText>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Inventore sunt quia in consequuntur doloribus odit libero, 
+                aliquam architecto dolorem quos voluptatibus 
+                illum aspernatur vel rem, eveniet dolor eaque, doloremque ex!</p>
+        </div>        
+        <div class="Picture3">
+            <img src="fishing.jpg" alt="About Me">  
+        </div>
+    </section>          
+</div>
+</section>
+
+<section>
+<div class="Everything">
+    <div class="thirdsection">            
+        <img src="fashionadfront.png" alt="visits" class="fashionad" />
+        <div class="overall">    
+            <img src="./Buisness/4-Ps.png" />
+            <img src="./Buisness/CUMULUS-MEDIA-PNG.png" />
+            <img src="./Buisness/SupplyChain.jpg" />
+            <img src="./Buisness/ITC.jpg" />
+            <img src="./Buisness/media.jpg" />
+            <a href="https://docs.google.com/presentation/d/1MnYTOlXmxD3N2nvyV09FPa9N03mA_ChbL9DbUIMuO4E/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/LifeCycle.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/1o6Q2OOIXy-GezJ1j7IWN_h0d5x2VKGyCDDd0hvOr8EU/edit" target="_blank">
+                <img src="./Buisness/Showcase.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/13uMU7XO2u5weqco9a0gdt2S_AbsQw5IGxVl8-dx4aUM/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/Economy.png" />
+            </a>     
+        </div>
+        <div class="overall">
+            <img src="./Buisness/4-Ps.png" />
+            <img src="./Buisness/CUMULUS-MEDIA-PNG.png" />
+            <img src="./Buisness/SupplyChain.jpg" />
+            <img src="./Buisness/ITC.jpg" />
+            <img src="./Buisness/media.jpg" />
+            <a href="https://docs.google.com/presentation/d/1MnYTOlXmxD3N2nvyV09FPa9N03mA_ChbL9DbUIMuO4E/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/LifeCycle.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/1o6Q2OOIXy-GezJ1j7IWN_h0d5x2VKGyCDDd0hvOr8EU/edit" target="_blank">
+                <img src="./Buisness/Showcase.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/13uMU7XO2u5weqco9a0gdt2S_AbsQw5IGxVl8-dx4aUM/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/Economy.png" />
+            </a>     
+        </div>
+    </div>
+    <div class="fourthsection">
+        <div class="overall">
+            <img src="./Buisness/4-Ps.png" />
+            <img src="./Buisness/CUMULUS-MEDIA-PNG.png" />
+            <img src="./Buisness/SupplyChain.jpg" />
+            <img src="./Buisness/ITC.jpg" />
+            <img src="./Buisness/media.jpg" />
+            <a href="https://docs.google.com/presentation/d/1MnYTOlXmxD3N2nvyV09FPa9N03mA_ChbL9DbUIMuO4E/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/LifeCycle.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/1o6Q2OOIXy-GezJ1j7IWN_h0d5x2VKGyCDDd0hvOr8EU/edit" target="_blank">
+                <img src="./Buisness/Showcase.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/13uMU7XO2u5weqco9a0gdt2S_AbsQw5IGxVl8-dx4aUM/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/Economy.png" />
+            </a>     
+        </div>
+        <div class="overall">
+            <img src="./Buisness/4-Ps.png" />
+            <img src="./Buisness/CUMULUS-MEDIA-PNG.png" />
+            <img src="./Buisness/SupplyChain.jpg" />
+            <img src="./Buisness/ITC.jpg" />
+            <img src="./Buisness/media.jpg" />
+            <a href="https://docs.google.com/presentation/d/1MnYTOlXmxD3N2nvyV09FPa9N03mA_ChbL9DbUIMuO4E/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/LifeCycle.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/1o6Q2OOIXy-GezJ1j7IWN_h0d5x2VKGyCDDd0hvOr8EU/edit" target="_blank">
+                <img src="./Buisness/Showcase.png" />
+            </a>
+            <a href="https://docs.google.com/presentation/d/13uMU7XO2u5weqco9a0gdt2S_AbsQw5IGxVl8-dx4aUM/edit?usp=sharing" target="_blank">
+                <img src="./Buisness/Economy.png" />
+            </a>     
+        </div>    
+        <img src="fashionadback.png" alt="visits" class="fashionadback" />
+    </div>
+
+</div>
+
+
+
+<div class="bottomleftbar">
+    <div class="icon-container">
+
+    <a href="https://www.linkedin.com/in/som-javia-2679b32a4/" target="_blank">
+        <img src="linkedin.png" alt="linkedin" class="icon"/>
+    </a>        
+    <a href="https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA" target="_blank">
+        <img src="youtube.png" alt="youtube" class="icon"/>
+    </a>    
+    <a href="www.instagram.com" target="_blank">
+        <img src="instagram.png" alt="instagram" class="icon"/>
+    </a>
+
+    </div>
+    &nbsp;
+</div>
+ 
+</section>
+<footer class="foot">
+    <h1>
+        Contact Me.
+    </h1>
+    <p>
+        Mobile: 973-709-1661 <br>
+        Email: sjavia@hotmail.com
+    </p>
+</footer>
+
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/ruritania');
+    </style> <!-- Font imported from another site -->
+    <script src="script.js"></script> <!-- Javascript file -->
+
+<script>
+    // Intersection Observer for text typing animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // If the text content is visible, start the typewriter animations
+                Typewriter(); // Triggers the African proverb typewriter
+            }
+        });
+    }, { threshold: 0.7 }); // Trigger when 30% of the element is visible
+
+    // Select the element that contains your typewriter text
+    const textContent = document.querySelector('.text-content');
+    
+    // Start observing the element
+    observer.observe(textContent);
+</script>
+</body>
+</html> 

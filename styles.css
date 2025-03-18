@@ -1,0 +1,531 @@
+html {
+    height: 100vh; /* Overall website */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+}
+body { /* Body Sizing, Margin 0, Purple Background */
+    width: 100vw;
+    height: 100vh;
+    margin:0;
+    background: rgb(94, 76, 146);
+    overflow-x: hidden; /* Hides overflow over block levels. Can set it to scroll*/
+    overflow-y: scroll; /*Now if, say text is overflowing, it automatically scrolls*/
+}
+.section1, .section2 { /*Sizing & Position*/
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1px; /* Display Z axis*/     
+    transform-style: preserve-3d; /*Set whether children of an element are positioned in 3D space */
+
+}
+.section1::before { /*Image background position and size, effect blur*/
+    perspective: 1px; /* Display Z axis*/     
+    transform-style: preserve-3d; /*Set whether children of an element are positioned in 3D space */
+    content:"";
+    width:100%;
+    height: 100%;
+    position: absolute;
+    background: url("base.jpg") top center;
+    background-size: cover;
+}
+.section1::after { /*2nd Image, in front of the section. Without blur*/
+    content:"";
+    width:100%;
+    height: 100%;
+    position: absolute;
+    background: url("mount.png") top center;
+    background-size: cover;
+}
+.section1::after .text{ /*Text goes in front*/
+    top:10;
+    transform: translateZ(-0.5px) scale(1.5,1.6) translate(-33%, -10);
+}
+.text-content {
+    display: inline-block;
+    flex: 1; /* Take half the space */
+    display: flex; /* Display it's position */
+    flex-direction: column; /* Text format */
+    justify-content: center; /* ahem */
+    padding-left: 5%; /* Spacing */
+    z-index: 1; /* Ensure text is above background layers */
+}
+.image-content {    
+    padding: 2rem;
+    margin-top: 20vh;
+    margin-bottom: 40vh;
+    flex: 1; /* Take half the space */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure image is above background layers */
+}
+.featured-image {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover; /*Avoids Akward positioning and stretching*/
+
+    height: 100vh; /* Double height than width */
+    width: 50vh;
+    
+}
+.slider-wrapper {
+    position: relative;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+.slider-track {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    
+}
+.slider {    
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    border-radius: 0.8rem; /* Corners of our image!*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /*Image Shadow*/
+}
+
+.slider img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*Avoids Akward positioning and stretching*/
+    display: block;
+}
+.slider-nav {
+    cursor: pointer;
+    opacity: 0.5;
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.slider-nav a.active {
+    opacity: 1;
+  }
+.slider-nav a {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+    text-decoration: none; /* Remove underline */
+  }
+
+
+.section2 { 
+    display: flex; /*Arranges items into a container*/
+    background: rgb(0, 0, 0);
+    flex-direction: row; /*Aligns Items in a row*/
+    align-items: center; /*Aligns Items into center*/
+    padding: 0 5%; /*Moves text to the Right*/
+}
+.text {
+    top: 35%; /* Set a fixed position from the top */
+    left: 50%;
+    position: absolute; /* Keep as absolute to prevent reflowing */
+    font-family: 'Ruritania', sans-serif;
+    font-size: 10vw;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    transform: translate(-50%, 0); /* Center horizontally */
+    z-index: 1;
+    /* Remove any margin-bottom that might affect positioning */
+}
+/*one important note, vh is basically Pixels * 10 lol*/
+
+.text2 {  /*HEADER TEXT: Spacing, Text to left, and Font styles*/
+    position: absolute;
+    top: 10%;
+    text-align: left;
+    font-family: 'Ruritania', sans-serif;
+    font-size: 12vw;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+.text3aboutthissite { /*PARAGRAPH: Center to Left*/
+    position: relative;
+    bottom: -5vh;
+    font-family: 'Ariel', monospace;
+    font-style: italic;
+    font-size: 2vw;
+    color:rgb(255, 255, 255);
+    text-align: left;
+}
+
+h3 { /*African Proverb (Spacing on bottom)*/
+    position: absolute; /* Position absolutely to avoid affecting other elements */
+    bottom: 45vh; /* Position it lower than the heading */
+    left: 30%;
+    transform: translateX(-50%); /* Center horizontally */
+    font-family: 'Ruritania', sans-serif;
+    font-size: 2vw;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: 80%; /* Control the width to manage line breaks */
+    line-height: 1.5;
+    z-index: 1;
+    margin-top: auto;
+}
+
+/*----- Cool Image Slider ----- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*Changes the box module so that the padding is inside the line ofc*/
+}
+
+@keyframes slide {
+    from {
+        transform:translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.logos {
+    overflow: hidden;
+    padding: 60px 0; /*60px: Top and bottom, 0: left and right*/
+    white-space: nowrap;
+}
+
+.logos-slide {
+    display: inline-block;
+    animation: 8s slide infinite linear; /*Make it last for 5 seconds, Infinite, Linear makes it so it doesn't speed up or slow down*/
+}
+
+/*To make it Move seamless, literally just duplicate the slide so it can transition to the next one*/
+
+.logos-slide img {
+    height: 100px;
+    margin: 0 40px; /* 40 px left and right on the image tab*/
+}
+
+/*----- Image next to text ----- */
+.Pega6{ /*Whole PEGA6 Section*/
+    background-color: rgb(226, 231, 241);
+}
+/*Scroll Container*/
+
+.scroll-container {
+    width: 90%; /* Width of the box*/
+    display: flex; /**/
+    justify-content: center; /*Makes the content organized and in center*/
+    align-items: center; /*Everything is center in it's right place*/
+    flex-direction: column; /*Puts Text in proper format*/
+    text-align: center; /*Aligns text in center*/
+    margin: auto; /*Spacing of text between margins*/
+    margin-top: 10vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.scroll-container h2 {
+    font-size: 50px; /*Heading Font*/
+    color: black; 
+    margin-bottom: 25px; /*Text spacing between the margin*/
+    position: relative; /*Child o' parent*/
+}
+
+.scroll-container h2::after{ /*This whole thing is literally the text underline LOL*/
+
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin:0 auto;
+    background-color: rgb(99, 210, 151);
+}
+.scroll-container P{ /*Font Size, color, space on bottom of text*/
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    margin-bottom: 110px; 
+}
+
+/*BorderFrame1 CALCULATOR*/
+
+.BorderFrame1 { /*This really is just a basic border for overall Text, Picture, Paragraph*/
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    margin-bottom: 100px;
+}
+.Calculator {
+    display: flex; /*Proper Positioning*/
+    justify-content: space-between; /*Spacing between the content of the Picture and Text*/
+    align-items: center; /*Items set to center*/
+    flex-wrap: wrap; /*Alignment in a row, if row too full then continue onto next list*/
+}
+.Picture1 { /*Positioning, Margin Spacing, Prevents bad cropping of image */
+    width: 100%;
+    max-width: 50vw;
+    border-radius: 10px;
+    flex:1;
+    margin-left: 40px;
+    overflow: hidden;
+}
+.Picture1 img{ /*Size, Auto-Height Size, Display properties, and when animation for hovering*/
+    width: 100%;
+    max-width: 50vw;
+    height: auto;
+    display: block;
+    transition: 0.5s ease;
+}
+.Picture1:hover img{ /*Animation*/
+    transform: scale(1.2);
+}
+.Calculator-Content{ /*Positioning*/
+    flex:1; 
+} 
+.Calculator-Content BorderText{ /*Header*/
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+
+}
+.Calculator-Content p{ /*Prevents text overflow, Spacing, MLA Style spacing*/
+    overflow: auto;
+    margin: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/*BorderFrame2 TO DO LIST*/
+
+.BorderFrame2 { /*This really is just a basic border for overall Text, Picture, Paragraph*/
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    margin-bottom: 100px;
+}
+.TODO {
+    display: flex; /*Proper Positioning*/
+    justify-content: space-between; /*Spacing between the content of the Picture and Text*/
+    align-items: center; /*Items set to center*/
+    flex-wrap: wrap; /*Alignment in a row, if row too full then continue onto next list*/
+}
+.Picture2 { /*Positioning, Margin Spacing, Prevents bad cropping of image */
+    width: 100%;
+    max-width: 50vw;
+    border-radius: 10px;
+    flex:1;
+    margin-right: 40px;
+    overflow: hidden;
+}
+.Picture2 img{ /*Size, Auto-Height Size, Display properties, and when animation for hovering*/
+    width: 100%;
+    max-width: 50vw;
+    height: auto;
+    display: block;
+    transition: 0.5s ease;
+}
+.Picture2:hover img{ /*Animation*/
+    transform: scale(1.2);
+}
+.TodoList { /*Positioning*/
+    flex:1; 
+} 
+.TodoList BorderText{ /*Header*/
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+
+}
+.TodoList p{ /*Prevents text overflow, Spacing, MLA Style spacing*/
+    overflow: auto;
+    margin: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/*BorderFrame3 ABOUT ME*/
+
+.BorderFrame3 { /*This really is just a basic border for overall Text, Picture, Paragraph*/
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    margin-bottom: 200px;
+}
+.AboutME {
+    display: flex; /*Proper Positioning*/
+    justify-content: space-between; /*Spacing between the content of the Picture and Text*/
+    align-items: center; /*Items set to center*/
+    flex-wrap: wrap; /*Alignment in a row, if row too full then continue onto next list*/
+}
+.Picture3 { /*Positioning, Margin Spacing, Prevents bad cropping of image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 50vw;
+    overflow: hidden;
+    border-radius: 10px;
+    flex:1;
+    margin-left: 40px;
+    overflow: hidden;
+}
+.Picture3 img{ /*Size, Auto-Height Size, Display properties, and when animation for hovering*/
+    width: 100%;
+    height: auto;
+    max-width: 50vw;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s ease;
+}
+.Picture3:hover img{ /*Animation*/
+    transform: scale(1.2);
+}
+.About-Content{ /*Positioning*/
+    flex:1; 
+} 
+.About-Content BorderText{ /*Header*/
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+
+}
+.About-Content p{ /*Prevents text overflow, Spacing, MLA Style spacing*/
+    overflow: auto;
+    margin: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/* footer*/
+.foot{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /*Puts Text in proper format*/
+    text-align: center; /*Aligns text in center*/
+    background-color: black;
+}
+
+.foot h1{
+    margin-top: 20px;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    color: white;
+}
+
+.foot p{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* buisness */
+
+@keyframes slide2 {
+    from {
+        transform:translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.overall {
+    margin-top: 4vh;
+    display: inline-block;
+    animation: 20s slide2 infinite linear;
+    margin-bottom: 4vh;
+}
+
+.overall img{
+    height: 100px;
+    margin: 0 40px;
+}
+
+.thirdsection {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 60px 0; 
+}
+
+.fourthsection {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 60px 0;
+}
+
+.Everything {
+    margin-top: 24vh;
+    margin-bottom: 30vh;
+    perspective: 1px; /* Display Z axis*/     
+    transform-style: preserve-3d; /*Set whether children of an element are positioned in 3D space */
+}
+
+.fashionad {    
+    position: absolute;
+    width: 1500px;
+    height: auto;
+    display: block;
+    z-index: 0;
+    bottom: -30vh;
+}
+
+.fashionadback {
+    position: absolute;
+    width: 1500px;
+    height: auto;
+    display: block;
+    background-image: none;
+    bottom: -8vh;
+    z-index: -1;
+}
+
+.bottomleftbar {
+    position: fixed;
+    bottom: -22px;
+    left: -60px;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    background: url(LinksSection.png) no-repeat center center;
+    background-size: contain;
+    width: 30%;
+    height: 30%;
+    z-index: 2000;
+    align-items: center;
+}
+
+.bottomleftbar .icon {
+    margin-left: 40px;
+    position: absolute;
+    bottom: 8%;
+    margin-left: 80px;
+    width: 70px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.bottomleftbar a:hover .icon {
+    transform: scale(1.2);
+}
+
+.icon-container {
+    display: flex;
+    gap: 100px;
+}
