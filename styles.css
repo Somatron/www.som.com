@@ -360,7 +360,7 @@ h3 { /*African Proverb (Spacing on bottom)*/
     width: 90%;
     margin: 0 auto;
     padding: 10px 20px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 .AI {
     display: flex; /*Proper Positioning*/
@@ -369,29 +369,24 @@ h3 { /*African Proverb (Spacing on bottom)*/
     flex-wrap: wrap; /*Alignment in a row, if row too full then continue onto next list*/
 }
 .Picture3 { /*Positioning, Margin Spacing, Prevents bad cropping of image */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     max-width: 50vw;
-    overflow: hidden;
     border-radius: 10px;
     flex:1;
-    margin-left: 40px;
+    margin-right: 40px;
     overflow: hidden;
 }
 .Picture3 img{ /*Size, Auto-Height Size, Display properties, and when animation for hovering*/
     width: 100%;
-    height: auto;
     max-width: 50vw;
-    object-fit: cover;
+    height: auto;
     display: block;
     transition: 0.5s ease;
 }
 .Picture3:hover img{ /*Animation*/
     transform: scale(1.2);
 }
-.AIToDo{ /*Positioning*/
+.AIToDo { /*Positioning*/
     flex:1; 
 } 
 .AIToDo BorderText{ /*Header*/
@@ -406,7 +401,6 @@ h3 { /*African Proverb (Spacing on bottom)*/
     font-size: 20px;
     line-height: 1.5;
 }
-
 
 /*BorderFrame4 ABOUT ME*/
 
