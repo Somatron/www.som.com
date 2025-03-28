@@ -354,7 +354,7 @@ h3 { /*African Proverb (Spacing on bottom)*/
     line-height: 1.5;
 }
 
-/*BorderFrame3 ABOUT ME*/
+/*BorderFrame3 AI Features*/
 
 .BorderFrame3 { /*This really is just a basic border for overall Text, Picture, Paragraph*/
     width: 90%;
@@ -362,7 +362,7 @@ h3 { /*African Proverb (Spacing on bottom)*/
     padding: 10px 20px;
     margin-bottom: 200px;
 }
-.AboutME {
+.AI {
     display: flex; /*Proper Positioning*/
     justify-content: space-between; /*Spacing between the content of the Picture and Text*/
     align-items: center; /*Items set to center*/
@@ -389,6 +389,60 @@ h3 { /*African Proverb (Spacing on bottom)*/
     transition: 0.5s ease;
 }
 .Picture3:hover img{ /*Animation*/
+    transform: scale(1.2);
+}
+.AIToDo{ /*Positioning*/
+    flex:1; 
+} 
+.AIToDo BorderText{ /*Header*/
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+
+}
+.AIToDo p{ /*Prevents text overflow, Spacing, MLA Style spacing*/
+    overflow: auto;
+    margin: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+
+/*BorderFrame4 ABOUT ME*/
+
+.BorderFrame4 { /*This really is just a basic border for overall Text, Picture, Paragraph*/
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    margin-bottom: 200px;
+}
+.AboutME {
+    display: flex; /*Proper Positioning*/
+    justify-content: space-between; /*Spacing between the content of the Picture and Text*/
+    align-items: center; /*Items set to center*/
+    flex-wrap: wrap; /*Alignment in a row, if row too full then continue onto next list*/
+}
+.Picture4 { /*Positioning, Margin Spacing, Prevents bad cropping of image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 50vw;
+    overflow: hidden;
+    border-radius: 10px;
+    flex:1;
+    margin-left: 40px;
+    overflow: hidden;
+}
+.Picture4 img{ /*Size, Auto-Height Size, Display properties, and when animation for hovering*/
+    width: 100%;
+    height: auto;
+    max-width: 50vw;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s ease;
+}
+.Picture4:hover img{ /*Animation*/
     transform: scale(1.2);
 }
 .About-Content{ /*Positioning*/
